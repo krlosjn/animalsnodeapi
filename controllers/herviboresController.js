@@ -58,7 +58,7 @@ module.exports = {
             updateHervibore.nombre = updaterAnimal.nombre;
             updateHervibore.especie = updaterAnimal.especie;
             updateHervibore.caracteristicas = updaterAnimal.caracteristicas;
-            updateHervibore.save();
+            await updateHervibore.save();
             res.status(200).json({
                 msg: 'Usuario actualizado',
                 body: updateHervibore
@@ -74,7 +74,7 @@ module.exports = {
         try {
             const { params: { id } } = req;
             const deleteAnimal = await animalData.findOne({ _id: Object(id) });
-            const animalDeleted = deleteAnimal.remove();
+            const animalDeleted = await deleteAnimal.remove();
             res.status(200).json({
                 msg: 'Animal eliminado',
                 body: animalDeleted
